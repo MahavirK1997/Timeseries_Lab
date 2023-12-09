@@ -1,0 +1,5 @@
+[core]
+    remote = tse2e
+['remote "tse2e"']
+    url = gs://mlops_fall23
+    credentialpath = E:\NEU\TA\Keys\bubbly-polygon-404522-ba0245de2400.json
