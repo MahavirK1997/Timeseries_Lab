@@ -1,9 +1,9 @@
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 WORKDIR /
 
-ENV AIP_STORAGE_URI=gs://mlops___fall2023/model
-ENV BUCKET_NAME=mlops___fall2023
+ENV AIP_STORAGE_URI=gs://timeseries_data_model_bucket/model
+ENV BUCKET_NAME=timeseries_data_model_bucket
 
 COPY trainer /trainer
 
