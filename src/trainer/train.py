@@ -146,7 +146,7 @@ def main():
     and uploading the model to Google Cloud Storage.
     """
     # Load and transform data
-    gcs_train_data_path = "gs://mlops___fall2023/data/train/train_data.csv"
+    gcs_train_data_path = "gs://timeseries_data_model_bucket/data/train/train_data.csv"
     df = load_data(gcs_train_data_path)
     X_train, X_test, y_train, y_test = data_transform(df)
 

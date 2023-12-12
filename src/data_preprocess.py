@@ -26,6 +26,7 @@ def preprocess_data(train_data, normalization_stats_gcs_path):
     }
     # Save the normalization statistics to a JSON file on GCS
     with fs.open(normalization_stats_gcs_path, 'w') as json_file:
+        print("Normalization Stats:", normalization_stats)
         json.dump(normalization_stats, json_file)
 
 def update_datasets(monthly_dataframes, train_data_gcs_path, test_data_gcs_path, normalization_stats_gcs_path):
@@ -77,13 +78,13 @@ def update_datasets(monthly_dataframes, train_data_gcs_path, test_data_gcs_path,
 
 def main():
     # Define GCS paths for the data
-    train_data_gcs_path = "gs://mlops___fall2023/data/train/train_data.csv"
-    test_data_gcs_path = "gs://mlops___fall2023/data/test/test_data.csv"
-    normalization_stats_gcs_path = "gs://mlops___fall2023/scaler/normalization_stats.json"
+    train_data_gcs_path = "gs://timeseries_data_model_bucket/data/train/train_data.csv"
+    test_data_gcs_path = "gs://timeseries_data_model_bucket/data/test/test_data.csv"
+    normalization_stats_gcs_path = "gs://timeseries_data_model_bucket/scaler/normalization_stats.json"
     
     # air_quality_data = pd.read_excel(os.path.join("..", "data", "raw_data", "AirQualityUCI.xlsx"))
-    gcs_train_data_path = "gs://mlops___fall2023/data/AirQualityUCI.xlsx"
-    air_quality_data = pd.read_excel(gcs_train_data_path)
+    gcs_train_data_path = "gs://timeseries_data_model_bucket/data/AirQualityUCI.csv"
+    air_quality_data = pd.read_csv(gcs_train_data_path)
     
     air_quality_data['YearMonth'] = air_quality_data['Date'].dt.to_period('M')
     monthly_groups = air_quality_data.groupby('YearMonth')

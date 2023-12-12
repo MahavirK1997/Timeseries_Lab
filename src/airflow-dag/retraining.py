@@ -2,11 +2,11 @@ import datetime as dt
 from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 
-LOCAL_PREPROCESS_FILE_PATH = '/tmp/preprocess.py'
-GITHUB_PREPROCESS_RAW_URL = 'https://raw.githubusercontent.com/shankar-dh/Timeseries/main/src/data_preprocess.py'  # Adjust the path accordingly
+LOCAL_PREPROCESS_FILE_PATH = '/tmp/data_preprocess.py'
+GITHUB_PREPROCESS_RAW_URL = 'https://github.com/MahavirK1997/Timeseries_Lab/blob/master/src/data_preprocess.py'  # Adjust the path accordingly
 
 LOCAL_TRAIN_FILE_PATH = '/tmp/train.py'
-GITHUB_TRAIN_RAW_URL = 'https://raw.githubusercontent.com/shankar-dh/Timeseries/main/src/trainer/train.py'  # Adjust the path accordingly
+GITHUB_TRAIN_RAW_URL = 'https://github.com/MahavirK1997/Timeseries_Lab/blob/master/src/trainer/train.py'  # Adjust the path accordingly
 
 default_args = {
     'owner': 'Time_Series_IE7374',
@@ -38,7 +38,7 @@ pull_train_script = BashOperator(
 
 
 env = {
-    'AIP_STORAGE_URI': 'gs://mlops__fall23/model'
+    'AIP_STORAGE_URI': 'gs://timeseries_data_model_bucket/model'
 }
 
 # Tasks for running scripts
